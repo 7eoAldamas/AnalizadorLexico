@@ -34,8 +34,10 @@ public class Principal extends JFrame {
 
         panelP = new javax.swing.JPanel();
         scrollPInput = new javax.swing.JScrollPane();
+        inputTxtA = new javax.swing.JTextArea();
         analizarBtn = new javax.swing.JButton();
         scrollPShow = new javax.swing.JScrollPane();
+        ouputTxtA = new javax.swing.JTextArea();
         reiniciarBtn = new javax.swing.JButton();
         imageLbl = new javax.swing.JLabel();
 
@@ -45,9 +47,28 @@ public class Principal extends JFrame {
 
         panelP.setBackground(new java.awt.Color(213, 250, 155));
 
+        inputTxtA.setColumns(20);
+        inputTxtA.setRows(5);
+        scrollPInput.setViewportView(inputTxtA);
+
         analizarBtn.setText("Analizar");
+        analizarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                analizarBtnMouseClicked(evt);
+            }
+        });
+
+        ouputTxtA.setEditable(false);
+        ouputTxtA.setColumns(20);
+        ouputTxtA.setRows(5);
+        scrollPShow.setViewportView(ouputTxtA);
 
         reiniciarBtn.setText("Reiniciar");
+        reiniciarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reiniciarBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPLayout = new javax.swing.GroupLayout(panelP);
         panelP.setLayout(panelPLayout);
@@ -57,8 +78,8 @@ public class Principal extends JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(scrollPInput, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(imageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(imageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(scrollPShow, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
             .addGroup(panelPLayout.createSequentialGroup()
@@ -79,7 +100,7 @@ public class Principal extends JFrame {
                             .addComponent(scrollPShow)))
                     .addGroup(panelPLayout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(imageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(imageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(panelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(analizarBtn)
@@ -101,10 +122,22 @@ public class Principal extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void analizarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_analizarBtnMouseClicked
+        // Evento - Realizar Análisis
+        
+    }//GEN-LAST:event_analizarBtnMouseClicked
+
+    private void reiniciarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reiniciarBtnMouseClicked
+        // Evento - Reiniciar Análisis
+        
+    }//GEN-LAST:event_reiniciarBtnMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton analizarBtn;
     private javax.swing.JLabel imageLbl;
+    private javax.swing.JTextArea inputTxtA;
+    private javax.swing.JTextArea ouputTxtA;
     private javax.swing.JPanel panelP;
     private javax.swing.JButton reiniciarBtn;
     private javax.swing.JScrollPane scrollPInput;
