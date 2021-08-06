@@ -1,5 +1,6 @@
 package com.gt.vista.GUI;
 
+import com.gt.tokenizer.Validaciones;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -8,6 +9,7 @@ public class Principal extends JFrame {
 //---
     
     private ImageIcon image, icon;
+    private Validaciones validarCaracter = new Validaciones();
     
     //--- Contructor Principal(GUI) 
     public Principal() {
@@ -124,12 +126,12 @@ public class Principal extends JFrame {
 
     private void analizarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_analizarBtnMouseClicked
         // Evento - Realizar Análisis
-        
+        validarCaracter.validacionGeneral(inputTxtA, ouputTxtA);
     }//GEN-LAST:event_analizarBtnMouseClicked
 
     private void reiniciarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reiniciarBtnMouseClicked
         // Evento - Reiniciar Análisis
-        
+        inputTxtA.setText("");
     }//GEN-LAST:event_reiniciarBtnMouseClicked
 
 

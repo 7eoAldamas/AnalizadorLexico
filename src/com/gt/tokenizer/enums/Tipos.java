@@ -15,6 +15,7 @@ public enum Tipos {
     NUM_ENTERO("Numero Entero"),
     NUM_DECIMAL("Numero Decimal"),
     SIMBOLO("Simbolo"),
+    ESPACIO("ESPACIO"),
     ERROR("Error");
     
     private String claseTipo;
@@ -27,6 +28,6 @@ public enum Tipos {
     //--- Getter
     public String getClaseTipo() {
         return claseTipo;
-    }    
+    }     
 
 }
