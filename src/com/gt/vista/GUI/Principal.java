@@ -132,6 +132,7 @@ public class Principal extends JFrame {
     private void reiniciarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reiniciarBtnMouseClicked
         // Evento - Reiniciar Análisis
         inputTxtA.setText("");
+        ouputTxtA.setText("");
     }//GEN-LAST:event_reiniciarBtnMouseClicked
 
 

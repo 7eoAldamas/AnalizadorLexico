@@ -2,6 +2,7 @@ package com.gt.tokenizer;
 
 import com.gt.tokenizer.enums.Tipos;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.JTextArea;
 
@@ -9,8 +10,7 @@ public class Validaciones {
 //---
     
     //--- Constructor Validaciones
-    public Validaciones() {
-    }
+    public Validaciones() {}
 
     //--- Método para realizar las - validaciones -
     public void validacionGeneral(JTextArea inputTxtA, JTextArea ouputTxtA) {
@@ -52,12 +52,10 @@ public class Validaciones {
                 }
             } else if (Character.isDigit(caracterInput[0])) { //Validaciones Tipo Número Entero/Decimal
                 int num = validacionEntero(caracterInput);
-                if (num == 1) {
-                    tokens[i] = Tipos.NUM_ENTERO;
-                } else if (num == 2){
-                    tokens[i] = Tipos.NUM_DECIMAL;
-                } else if (num == 3){
-                    tokens[i] = Tipos.ERROR;
+                switch (num) {
+                    case 1 -> tokens[i] = Tipos.NUM_ENTERO;
+                    case 2 -> tokens[i] = Tipos.NUM_DECIMAL;
+                    case 3 -> tokens[i] = Tipos.ERROR;
                 }
             } else if (caracteresValidos(caracterInput[0])){ //Validaciones Tipo Símbolos
                 if (caracterInput.length > 1 && caracterInput[0] != ' ') {
@@ -70,7 +68,10 @@ public class Validaciones {
             } else if (Character.isWhitespace(caracterInput[0])){ //Validaciones de Espacios
                 tokens[i] = Tipos.ESPACIO;
             }
-        }
+        }        
+        List<Tipos> tipos = new ArrayList<>();
+        tipos = Arrays.asList(tokens); //Pasar el arreglo a un ArrayList
+        ouputTxtA.setText("Tipos:\n"+ tipos + "\n");
     }
 
     //--- Método Complemento - Evaluar Cadena
@@ -139,12 +140,13 @@ public class Validaciones {
         return isValido;
     }
 
-    //--- Método Complemento - Símbolos NO Permitidos
+    //--- Método Complemento - Símbolos NO Permitidos (Posibles Entradas)
     public boolean caracteresErroneos(char c) {
         boolean isPermitido = false;
         switch (c) {
             case '.' -> {isPermitido = true;}
             case '!' -> {isPermitido = true;}
+            case '¡' -> {isPermitido = true;}
             case '#' -> {isPermitido = true;}
             case '$' -> {isPermitido = true;}
             case '%' -> {isPermitido = true;}
@@ -152,7 +154,6 @@ public class Validaciones {
             case '/' -> {isPermitido = true;}
             case '=' -> {isPermitido = true;}
             case '?' -> {isPermitido = true;}
-            case '¡' -> {isPermitido = true;}
             case '¿' -> {isPermitido = true;}
             case '+' -> {isPermitido = true;}
             case '-' -> {isPermitido = true;}

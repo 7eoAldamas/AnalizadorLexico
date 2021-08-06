@@ -15,7 +15,7 @@ public enum Tipos {
     NUM_ENTERO("Numero Entero"),
     NUM_DECIMAL("Numero Decimal"),
     SIMBOLO("Simbolo"),
-    ESPACIO("ESPACIO"),
+    ESPACIO("Espacio"),
     ERROR("Error");
     
     private String claseTipo;
@@ -30,4 +30,10 @@ public enum Tipos {
         return claseTipo;
     }     
 
+    //--- 
+    @Override
+    public String toString() {
+        return claseTipo + "";
+    }
+    
 }
