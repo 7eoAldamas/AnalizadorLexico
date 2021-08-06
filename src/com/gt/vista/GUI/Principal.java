@@ -4,12 +4,13 @@ import com.gt.tokenizer.Validaciones;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Principal extends JFrame {
 //---
     
     private ImageIcon image, icon;
-    private Validaciones validarCaracter = new Validaciones();
+    private final Validaciones validarCaracter = new Validaciones();
     
     //--- Contructor Principal(GUI) 
     public Principal() {
@@ -50,6 +51,7 @@ public class Principal extends JFrame {
         panelP.setBackground(new java.awt.Color(213, 250, 155));
 
         inputTxtA.setColumns(20);
+        inputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inputTxtA.setRows(5);
         scrollPInput.setViewportView(inputTxtA);
 
@@ -62,6 +64,7 @@ public class Principal extends JFrame {
 
         ouputTxtA.setEditable(false);
         ouputTxtA.setColumns(20);
+        ouputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         ouputTxtA.setRows(5);
         scrollPShow.setViewportView(ouputTxtA);
 
@@ -126,7 +129,12 @@ public class Principal extends JFrame {
 
     private void analizarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_analizarBtnMouseClicked
         // Evento - Realizar Análisis
-        validarCaracter.validacionGeneral(inputTxtA, ouputTxtA);
+        try {
+            JOptionPane.showMessageDialog(this, "\t*-*   Analizando   *-*", "Importante", JOptionPane.INFORMATION_MESSAGE);
+            validarCaracter.validacionGeneral(inputTxtA, ouputTxtA);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "\tError - Analisis Lexico", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_analizarBtnMouseClicked
 
     private void reiniciarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reiniciarBtnMouseClicked

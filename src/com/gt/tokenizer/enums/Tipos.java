@@ -30,10 +30,10 @@ public enum Tipos {
         return claseTipo;
     }     
 
-    //--- 
+    //---  
     @Override
     public String toString() {
-        return claseTipo + "";
+        return claseTipo + "\n";
     }
     
 }

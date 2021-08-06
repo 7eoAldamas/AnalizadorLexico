@@ -16,7 +16,7 @@ public class Validaciones {
     public void validacionGeneral(JTextArea inputTxtA, JTextArea ouputTxtA) {
         
         String texto = inputTxtA.getText();
-        List<Integer> numero = new ArrayList<>(); //Numeros
+        List<Integer> numero = new ArrayList<>(); 
         numero.add(0);
         int contador = 0;
         for (int i = 0; i < texto.length(); i++) {
@@ -71,17 +71,17 @@ public class Validaciones {
         }        
         List<Tipos> tipos = new ArrayList<>();
         tipos = Arrays.asList(tokens); //Pasar el arreglo a un ArrayList
-        ouputTxtA.setText("Tipos:\n"+ tipos + "\n");
+        ouputTxtA.setText("Tipos:\n"+ tipos);
     }
 
     //--- Método Complemento - Evaluar Cadena
     public boolean validacionCadena(char[] caracter) {
         boolean isValido = true;
         for (int i = 0; i < caracter.length; i++) {
-            if (caracteresErroneos(caracter[i]) == true) {
+            if (caracteresErroneos(caracter[i])) {
                 isValido = false;
             }
-            if (caracteresValidos(caracter[i]) == true) {
+            if (caracteresValidos(caracter[i])) {
                 isValido = false;
             }
         }
@@ -92,10 +92,10 @@ public class Validaciones {
     public int validacionEntero(char[] caracter) {
         int entero = 1;
         for (int i = 0; i < caracter.length; i++) {
-            if (caracteresErroneos(caracter[i]) == true) {
+            if (caracteresErroneos(caracter[i])) {
                 entero = 3;
             }
-            if (caracteresValidos(caracter[i]) == true) {
+            if (caracteresValidos(caracter[i])) {
                 entero = 3;
             }
             if (Character.isLetter(caracter[i])) {
@@ -113,10 +113,10 @@ public class Validaciones {
     public int validacionDecimal(int init, char[] caracter) {
         int numero = 2;
         for (int i = init; i < caracter.length; i++) {
-            if (caracteresErroneos(caracter[i]) == true) {
+            if (caracteresErroneos(caracter[i])) {
                 numero = 3;
             }
-            if (caracteresValidos(caracter[i]) == true) {
+            if (caracteresValidos(caracter[i])) {
                 numero = 3;
             }
             if (Character.isLetter(caracter[i])) {
@@ -142,30 +142,40 @@ public class Validaciones {
 
     //--- Método Complemento - Símbolos NO Permitidos (Posibles Entradas)
     public boolean caracteresErroneos(char c) {
-        boolean isPermitido = false;
+        boolean isErroneo = false;
         switch (c) {
-            case '.' -> {isPermitido = true;}
-            case '!' -> {isPermitido = true;}
-            case '¡' -> {isPermitido = true;}
-            case '#' -> {isPermitido = true;}
-            case '$' -> {isPermitido = true;}
-            case '%' -> {isPermitido = true;}
-            case '&' -> {isPermitido = true;}
-            case '/' -> {isPermitido = true;}
-            case '=' -> {isPermitido = true;}
-            case '?' -> {isPermitido = true;}
-            case '¿' -> {isPermitido = true;}
-            case '+' -> {isPermitido = true;}
-            case '-' -> {isPermitido = true;}
-            case '*' -> {isPermitido = true;}
-            case '>' -> {isPermitido = true;}
-            case '<' -> {isPermitido = true;} 
-            case '@' -> {isPermitido = true;}
-            case ':' -> {isPermitido = true;}
-            case '(' -> {isPermitido = true;}
-            case ')' -> {isPermitido = true;}
+            case '.' -> {isErroneo = true;}
+            case '!' -> {isErroneo = true;}
+            case '¡' -> {isErroneo = true;}
+            case '"' -> {isErroneo = true;}
+            case '#' -> {isErroneo = true;}
+            case '$' -> {isErroneo = true;}
+            case '%' -> {isErroneo = true;}
+            case '&' -> {isErroneo = true;}
+            case '/' -> {isErroneo = true;}            
+            case '(' -> {isErroneo = true;}
+            case ')' -> {isErroneo = true;}           
+            case '=' -> {isErroneo = true;}
+            case '?' -> {isErroneo = true;}
+            case '¿' -> {isErroneo = true;}
+            case '+' -> {isErroneo = true;}
+            case '-' -> {isErroneo = true;}
+            case '*' -> {isErroneo = true;}
+            case '>' -> {isErroneo = true;}
+            case '<' -> {isErroneo = true;} 
+            case ':' -> {isErroneo = true;}
+            case '|' -> {isErroneo = true;}
+            case '^' -> {isErroneo = true;}
+            case '@' -> {isErroneo = true;}
+            case '_' -> {isErroneo = true;}
+            case '`' -> {isErroneo = true;}
+            case '°' -> {isErroneo = true;}
+            case '¬' -> {isErroneo = true;} 
+            case '¨' -> {isErroneo = true;} 
+            case '´' -> {isErroneo = true;} 
+            case '~' -> {isErroneo = true;} 
         }
-        return isPermitido;
+        return isErroneo;
     }
     
 }
