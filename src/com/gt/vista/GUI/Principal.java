@@ -51,8 +51,9 @@ public class Principal extends JFrame {
         panelP.setBackground(new java.awt.Color(213, 250, 155));
 
         inputTxtA.setColumns(20);
-        inputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         inputTxtA.setRows(5);
+        inputTxtA.setToolTipText("");
         scrollPInput.setViewportView(inputTxtA);
 
         analizarBtn.setText("Analizar");
@@ -64,7 +65,7 @@ public class Principal extends JFrame {
 
         ouputTxtA.setEditable(false);
         ouputTxtA.setColumns(20);
-        ouputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ouputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ouputTxtA.setRows(5);
         scrollPShow.setViewportView(ouputTxtA);
 
