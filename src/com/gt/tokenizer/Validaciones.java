@@ -9,6 +9,8 @@ import javax.swing.JTextArea;
 public class Validaciones {
 //---
     
+    private Token[] token;
+    
     //--- Constructor Validaciones
     public Validaciones() {}
 
@@ -69,9 +71,18 @@ public class Validaciones {
                 tokens[i] = Tipos.ESPACIO;
             }
         }        
+        
         List<Tipos> tipos = new ArrayList<>();
         tipos = Arrays.asList(tokens); //Pasar el arreglo a un ArrayList
-        ouputTxtA.setText("Tipos:\n"+ tipos);
+        token = new Token[tipos.size()]; //Token - Objeto
+        for (int i = 0; i < tipos.size(); i++) {
+            token[i] = new Token(cadena.get(i), tipos.get(i)); //Creación de objetos Token
+        }
+        
+        for (Token cadenas : token) { //Mostrar Información -> Tokens
+            ouputTxtA.setText(cadenas.toString());
+            System.out.println(cadenas.toString());
+        }
     }
 
     //--- Método Complemento - Evaluar Cadena
@@ -127,9 +138,9 @@ public class Validaciones {
     }
 
     //--- Método Complemento - Símbolos Permitidos
-    public boolean caracteresValidos(char c) {
+    public boolean caracteresValidos(char caracter) {
         boolean isValido = false;
-        switch (c) {
+        switch (caracter) {
             case '[' -> {isValido = true;}
             case ']' -> {isValido = true;}
             case '{' -> {isValido = true;}
@@ -141,9 +152,9 @@ public class Validaciones {
     }
 
     //--- Método Complemento - Símbolos NO Permitidos (Posibles Entradas)
-    public boolean caracteresErroneos(char c) {
+    public boolean caracteresErroneos(char caracter) {
         boolean isErroneo = false;
-        switch (c) {
+        switch (caracter) {
             case '.' -> {isErroneo = true;}
             case '!' -> {isErroneo = true;}
             case '¡' -> {isErroneo = true;}
