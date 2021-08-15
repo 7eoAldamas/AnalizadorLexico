@@ -2,7 +2,6 @@ package com.gt.tokenizer;
 
 import com.gt.tokenizer.enums.Tipos;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.JTextArea;
 
@@ -18,26 +17,26 @@ public class Validaciones {
     public void validacionGeneral(JTextArea inputTxtA, JTextArea ouputTxtA) {
         
         String texto = inputTxtA.getText();
-        List<Integer> numero = new ArrayList<>(); 
-        numero.add(0);
+        List<Integer> indice = new ArrayList<>(); 
+        indice.add(0);
         int contador = 0;
         for (int i = 0; i < texto.length(); i++) {
             if (" ".equals(texto.substring(i, i + 1))) {
                 if (i + 1 != texto.length()) {
                     if (" ".equals(texto.substring(i + 1, i + 2))) {
                     } else {
-                        numero.add(i);
-                        numero.add(i + 1);
+                        indice.add(i);
+                        indice.add(i + 1);
                         contador++; //Incremento
                     }
                 }
             }
         }
-        numero.add(texto.length());
+        indice.add(texto.length());
 
         List<String> cadena = new ArrayList<>(); //Palabras/Texto
-        for (int i = 0; i < numero.size(); i++) {
-            cadena.add(texto.substring(numero.get(i), numero.get(i + 1)));
+        for (int i = 0; i < indice.size(); i++) {
+            cadena.add(texto.substring(indice.get(i), indice.get(i + 1)));
             i++;
         }
 
@@ -72,16 +71,13 @@ public class Validaciones {
             }
         }        
         
-        List<Tipos> tipos = new ArrayList<>();
-        tipos = Arrays.asList(tokens); //Pasar el arreglo a un ArrayList
-        token = new Token[tipos.size()]; //Token - Objeto
-        for (int i = 0; i < tipos.size(); i++) {
-            token[i] = new Token(cadena.get(i), tipos.get(i)); //Creación de objetos Token
+        token = new Token[tokens.length]; //Token - Objeto
+        for (int i = 0; i < tokens.length; i++) {
+            token[i] = new Token(cadena.get(i), tokens[i]); //Creación de objetos Token
         }
         
         for (Token cadenas : token) { //Mostrar Información -> Tokens
-            ouputTxtA.setText(cadenas.toString());
-            System.out.println(cadenas.toString());
+            ouputTxtA.append(cadenas.toString() + "\n");            
         }
     }
 
@@ -101,40 +97,40 @@ public class Validaciones {
 
     //--- Método Complemento - Evaluar Entero (Número)
     public int validacionEntero(char[] caracter) {
-        int entero = 1;
+        int indice = 1;
         for (int i = 0; i < caracter.length; i++) {
             if (caracteresErroneos(caracter[i])) {
-                entero = 3;
+                indice = 3; //Error
             }
             if (caracteresValidos(caracter[i])) {
-                entero = 3;
+                indice = 3; //Error
             }
             if (Character.isLetter(caracter[i])) {
-                entero = 3;
+                indice = 3; //Error
             }
             if (caracter[i] == '.') {
-                entero = validacionDecimal(i + 1, caracter);
+                indice = validacionDecimal(i + 1, caracter);
                 i = caracter.length;
             }
         }
-        return entero;
+        return indice;
     }
 
     //--- Método Complemento - Evaluar Decimal (Número)
     public int validacionDecimal(int init, char[] caracter) {
-        int numero = 2;
+        int indice = 2;
         for (int i = init; i < caracter.length; i++) {
             if (caracteresErroneos(caracter[i])) {
-                numero = 3;
+                indice = 3; //Error
             }
             if (caracteresValidos(caracter[i])) {
-                numero = 3;
+                indice = 3; //Error
             }
             if (Character.isLetter(caracter[i])) {
-                numero = 3;
+                indice = 3; //Error
             }
         }
-        return numero;
+        return indice;
     }
 
     //--- Método Complemento - Símbolos Permitidos

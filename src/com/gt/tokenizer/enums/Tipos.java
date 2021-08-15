@@ -33,7 +33,7 @@ public enum Tipos {
     //---  
     @Override
     public String toString() {
-        return claseTipo + "\n";
+        return claseTipo;
     }
     
 }

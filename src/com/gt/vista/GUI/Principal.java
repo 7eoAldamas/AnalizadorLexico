@@ -66,6 +66,7 @@ public class Principal extends JFrame {
         ouputTxtA.setEditable(false);
         ouputTxtA.setColumns(20);
         ouputTxtA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ouputTxtA.setLineWrap(true);
         ouputTxtA.setRows(5);
         scrollPShow.setViewportView(ouputTxtA);
 
